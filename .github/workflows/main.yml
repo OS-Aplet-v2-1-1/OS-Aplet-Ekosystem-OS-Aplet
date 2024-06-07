@@ -1,2 +1,3 @@
 run: build
-run: Ubuntu 22.4.
+run: Ubuntu 22.04.4 LTS
+run: build all
