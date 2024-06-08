@@ -90,3 +90,4 @@ jobs:
         kubectl rollout status deployment/$DEPLOYMENT_NAM
         kubectl get services -o wide
         run:deployd
+        jobs: build 
