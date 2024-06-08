@@ -1,4 +1,4 @@
-# This workflow will build a docker container, publish it to Google Container Registry, and deploy it to GKE when there is a push to the "Master-Lukáš" branch.
+já# This workflow will build a docker container, publish it to Google Container Registry, and deploy it to GKE when there is a push to the "Master-Lukáš" branch.
 #
 # To configure this workflow:
 #
@@ -89,3 +89,4 @@ jobs:
         ./kustomize build . | kubectl apply -f -
         kubectl rollout status deployment/$DEPLOYMENT_NAME
         kubectl get services -o wide
+jo s:
