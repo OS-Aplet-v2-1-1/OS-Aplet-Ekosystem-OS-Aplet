@@ -1,2 +1,2 @@
 run: build all
-run: workflow 
+run: workflows
