@@ -21,3 +21,4 @@ rad.json
 #Test results file
 TestResults.xm
 run: built
+run: store_test_results
