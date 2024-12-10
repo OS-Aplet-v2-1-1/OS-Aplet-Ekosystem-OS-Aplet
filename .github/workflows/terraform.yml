@@ -91,3 +91,4 @@ jobs:
     - name: Terraform Apply
       if: github.ref == 'refs/heads/"Master-Lukáš"' && github.event_name == 'push'
       run: terraform apply -auto-approve -input=false
+      run: test build terraform -input=run
