@@ -1,0 +1,82 @@
+run:from flask import Flask, request, jsonify
+import re
+
+app = Flask(__os_aplet__)
+
+def is_strong_password(password):
+    # Password must be at least 8 characters long, contain at least one uppercase letter,
+    # one lowercase letter, one digit, and one special character.
+    if len(password) < 8:
+        return False
+    if not re.search(r'[A-Z]', password):
+        return False
+    if not re.search(r'[a-z]', password):
+        return False
+    if not re.search(r'[0-9]', password):
+        return False
+    if not re.search(r'[!@#$%^&*(),.?":{}|<>]', password):
+        return False
+    return True
+
+@app.route('/signup', methods=['POST'])
+def signup():
+    data = request.get_json()
+    
+    # Extract username and password
+    username = data.get('username')
+    password = data.get('password')
+    
+    # Check if username and password are provided
+    if not username or not password:
+        return jsonify({"error": "Username and password are required"}), 400
+    
+    # Validate password strength
+    if not is_strong_password(password):
+        return jsonify({"error": "Password is not strong enough"}), 400
+    
+    # Proceed with user registration (e.g., save to database)
+    # For this example, we'll just return a success message.
+    return jsonify({"message": "User registered successfully"}), 201
+
+if __name__ == '__main__': os_alet 
+            
+    run:        
+            - název: terraform-plan-storage
+  # Můžete připnout přesné potvrzení nebo verzi.
+  # použití: cloudposse/github-action-terraform-plan-storage@55b5d342c1eefee79e661b2709e91b19b4361c6d
+  použití: cloudposse/github-action-terraform-plan-storage@1.14.0
+  s:
+    # jakou akci provést. Platné hodnoty jsou: 'storePlan', 'getPlan', 'taintPlan'
+    action: # výchozí je storePlan
+    # název účtu Azure Blob Storage pro uložení souboru plánu
+    blobAccountName: # volitelné
+    # název kontejneru Azure Blob Storage pro uložení souboru plánu
+    blobContainerName: # volitelné
+    # název segmentu S3 pro uložení souboru plánu
+    bucketName: # volitelné, výchozí je terraform-plan-storage
+    # Zavázat SHA k použití pro načítání plánu
+    commitSHA: # volitelné, výchozí je
+    # název součásti odpovídající souboru plánu
+    komponenta: # volitelná
+    # připojovací řetězec k účtu CosmosDB pro uložení metadat
+    cosmosConnectionString: # volitelné
+    # název kontejneru CosmosDB pro uložení metadat
+    cosmosContainerName: # volitelné
+    # název databáze CosmosDB pro uložení metadat
+    cosmosDatabaseName: # volitelné
+    # koncový bod účtu CosmosDB pro ukládání metadat
+    cosmosEndpoint: # volitelné
+    # Selhání, pokud chybí plán
+    failOnMissingPlan: # volitelné, výchozí hodnota je true
+    # typ úložiště, kde je uložen soubor plánu. Platné hodnoty jsou: 'dynamo', 'cosmodb'
+    metadataRepositoryType: # volitelné, výchozí je dynamo
+    # cesta k souboru plánu Terraform. Vyžadováno pro akce 'storePlan' a 'getPlan'
+    planPath: # volitelné
+    # typ úložiště, kde jsou metadata uložena. Platné hodnoty jsou: 's3', 'azureblob'
+    planRepositoryType: # volitelné, výchozí je s3
+    # název zásobníku odpovídající souboru plánu
+    zásobník: # volitelné
+    # název tabulky dynamodb pro ukládání metadat
+    tableName: # volitelné, výchozí je terraform-plan-storage
+          
+    app.run(debug=True)
